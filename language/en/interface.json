@@ -3601,6 +3601,10 @@
 			"name": "Scavengers Units Pack",
 			"desc": "Units made for Scavengers, mostly silly and unbalanced for PvP."
 		},
+		"raptorscavarsenal": {
+			"name": "Raptor & Scavenger Arsenal",
+			"desc": "Player factions can build raptor nests, raptor turrets and every scavenger unit and building."
+		},
 		"map_waterlevel": {
 			"name": "Water Level",
 			"desc": "Doesn't work if Map Deformation is disabled! <0 = Decrease water level, >0 = Increase water level"

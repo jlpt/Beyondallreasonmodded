@@ -12,6 +12,8 @@
 		"manualfire_tooltip": "Fire the powerful commander Disintegrator-gun",
 		"manuallaunch": "Launch",
 		"manuallaunch_tooltip": "Launch a missile at a target",
+		"domainexpansion": "Domain Expansion",
+		"domainexpansion_tooltip": "Malevolent Shrine: slash every enemy inside the domain for a few seconds (uses energy, then recharges)",
 		"patrol": "Patrol",
 		"patrol_tooltip": "Patrol along one or more waypoints",
 		"fight": "Fight",

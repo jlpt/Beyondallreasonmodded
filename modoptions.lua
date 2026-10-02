@@ -1138,6 +1138,16 @@ local options = {
 		def = false,
 	},
 
+	-- NOTE: update language/en/interface.json when you change name or desc
+	{
+		key = "raptorscavarsenal",
+		name = "Raptor & Scavenger Arsenal",
+		desc = "Player factions can build raptor nests, raptor turrets and every scavenger unit and building.",
+		type = "bool",
+		section = "options_extra",
+		def = true,
+	},
+
 	{
 		key = "sub_header",
 		section = "options_extra",

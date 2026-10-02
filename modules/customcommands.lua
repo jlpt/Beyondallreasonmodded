@@ -40,6 +40,7 @@ local gameCommands = {
 	WANT_CLOAK = 37382,
 	HOUND_WEAPON_TOGGLE = 37383, -- unused
 	SMART_TOGGLE = 37384,
+	DOMAIN_EXPANSION = 37390,
 	AREA_ATTACK_GROUND = 39954,
 
 	-- terraform

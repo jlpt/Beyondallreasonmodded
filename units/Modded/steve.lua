@@ -1,0 +1,181 @@
+-- Steve, buildable from bot labs at three tech levels. Each tier keeps what the tiers below it can do:
+-- T1 shoots arrows and places dirt and cobblestone blocks, T2 adds nether portals, T3 adds TNT.
+
+local tiers = {
+	{
+		buildtime = 3000,
+		energycost = 1400,
+		metalcost = 120,
+		health = 700,
+		speed = 54,
+		sightdistance = 500,
+		footprint = 2,
+		movementclass = "BOT2",
+		collision = "18 36 12",
+		icontype = "armck",
+		explodeas = "smallexplosiongeneric",
+		selfdestructas = "smallExplosionGenericSelfd",
+		workertime = 80,
+		builddistance = 130,
+		bow = { damage = 60, range = 460, reload = 1.1, velocity = 480 },
+		buildoptions = { "mc_dirt", "mc_cobble" },
+	},
+	{
+		buildtime = 9500,
+		energycost = 6500,
+		metalcost = 460,
+		health = 2400,
+		speed = 60,
+		sightdistance = 560,
+		footprint = 3,
+		movementclass = "BOT3",
+		collision = "24 48 16",
+		icontype = "armack",
+		explodeas = "mediumExplosionGeneric",
+		selfdestructas = "mediumExplosionGenericSelfd",
+		workertime = 200,
+		builddistance = 160,
+		bow = { damage = 140, range = 560, reload = 0.9, velocity = 560 },
+		buildoptions = { "mc_dirt", "mc_cobble", "mc_nether_portal" },
+	},
+	{
+		buildtime = 45000,
+		energycost = 32000,
+		metalcost = 2200,
+		health = 9500,
+		speed = 60,
+		sightdistance = 650,
+		footprint = 4,
+		movementclass = "HBOT4",
+		collision = "32 64 22",
+		icontype = "armmar",
+		explodeas = "largeExplosionGeneric",
+		selfdestructas = "largeExplosionGenericSelfd",
+		workertime = 450,
+		builddistance = 200,
+		bow = { damage = 280, range = 650, reload = 0.8, velocity = 640, enchanted = true },
+		buildoptions = { "mc_dirt", "mc_cobble", "mc_nether_portal", "mc_tnt" },
+	},
+}
+
+local function steve(tier)
+	local t = tiers[tier]
+	local bow = {
+		accuracy = 150,
+		areaofeffect = 12,
+		avoidfeature = false,
+		craterareaofeffect = 0,
+		craterboost = 0,
+		cratermult = 0,
+		edgeeffectiveness = 1,
+		explosiongenerator = "custom:plasmahit-sparkonly",
+		impulsefactor = 0.2,
+		model = "Modded/mc_arrow.s3o",
+		name = "Bow",
+		noselfdamage = true,
+		range = t.bow.range,
+		reloadtime = t.bow.reload,
+		soundhit = "bimpact1",
+		soundhitwet = "splssml",
+		soundstart = "canlite3",
+		turret = true,
+		weapontype = "Cannon",
+		weaponvelocity = t.bow.velocity,
+		damage = {
+			default = t.bow.damage,
+			vtol = math.floor(t.bow.damage * 0.3),
+		},
+	}
+	if t.bow.enchanted then
+		bow.name = "Enchanted Bow (Flame)"
+		bow.explosiongenerator = "custom:fire-explosion-small"
+		bow.firestarter = 100
+	end
+
+	return {
+		builddistance = t.builddistance,
+		builder = true,
+		buildpic = "modded/steve_t" .. tier .. ".dds",
+		buildtime = t.buildtime,
+		canassist = true,
+		canmove = true,
+		canresurrect = false,
+		collisionvolumeoffsets = "0 0 0",
+		collisionvolumescales = t.collision,
+		collisionvolumetype = "Box",
+		energycost = t.energycost,
+		explodeas = t.explodeas,
+		footprintx = t.footprint,
+		footprintz = t.footprint,
+		health = t.health,
+		icontype = t.icontype,
+		maxacc = 0.3,
+		maxdec = 0.9,
+		maxslope = 17,
+		maxwaterdepth = 22,
+		metalcost = t.metalcost,
+		movementclass = t.movementclass,
+		nochasecategory = "VTOL",
+		objectname = "Modded/steve_t" .. tier .. ".s3o",
+		script = "Units/modded/steve_lus.lua",
+		seismicsignature = 0,
+		selfdestructas = t.selfdestructas,
+		sightdistance = t.sightdistance,
+		speed = t.speed,
+		turninplace = true,
+		turninplaceanglelimit = 90,
+		turninplacespeedlimit = 1.5,
+		turnrate = 1200,
+		upright = true,
+		workertime = t.workertime,
+		buildoptions = t.buildoptions,
+		customparams = {
+			model_author = "Vincent Yanez (Sketchfab, CC-BY-4.0)",
+			normaltex = "unittextures/blank_normal.dds",
+			subfolder = "Modded",
+			techlevel = tier,
+			unitgroup = tier == 1 and "builder" or ("buildert" .. tier),
+		},
+		sounds = {
+			build = "nanlath1",
+			canceldestruct = "cancel2",
+			capture = "capture1",
+			repair = "repair1",
+			underattack = "warning1",
+			working = "reclaim1",
+			cant = {
+				[1] = "cantdo4",
+			},
+			count = {
+				[1] = "count6",
+				[2] = "count5",
+				[3] = "count4",
+				[4] = "count3",
+				[5] = "count2",
+				[6] = "count1",
+			},
+			ok = {
+				[1] = "servtny1",
+			},
+			select = {
+				[1] = "servtny1",
+			},
+		},
+		weapondefs = {
+			bow = bow,
+		},
+		weapons = {
+			[1] = {
+				badtargetcategory = "VTOL",
+				def = "BOW",
+				onlytargetcategory = "NOTSUB",
+			},
+		},
+	}
+end
+
+return {
+	steve_t1 = steve(1),
+	steve_t2 = steve(2),
+	steve_t3 = steve(3),
+}

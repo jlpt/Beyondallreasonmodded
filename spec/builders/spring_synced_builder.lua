@@ -80,6 +80,7 @@ local function getUnitDefRequireModoptionDefaults()
 		-- Other features
 		unithats = false,
 		scavunitsforplayers = false,
+		raptorscavarsenal = true,
 		releasecandidates = false,
 		ruins = "disabled",
 		forceallunits = false,

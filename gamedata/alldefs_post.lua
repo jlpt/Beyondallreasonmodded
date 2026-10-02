@@ -53,6 +53,7 @@ local evocomTweaks = require("unitbasedefs/evocom").Tweaks
 local extraUnitsTweaks = require("unitbasedefs/experimental_extra_units").Tweaks
 local processRaptorsUnit = require("unitbasedefs/raptor_unitdefs_post").Tweaks
 local scavUnitsForPlayers = require("unitbasedefs/scavenger_units_for_players").Tweaks
+local moddedArsenalTweaks = require("unitbasedefs/modded_arsenal").Tweaks
 local junoReworkTweaks = require("unitbasedefs/juno_rework").Tweaks
 local navalBalanceTweaks = require("unitbasedefs/naval_balance_tweaks").Tweaks
 local skyshiftUnitTweaks = require("unitbasedefs/skyshiftunits_post").skyshiftUnitTweaks
@@ -510,6 +511,9 @@ local function unitDef_Post(name, uDef)
 	if string.find(name, "raptor", 1, true) and uDef.health then
 		processRaptorsUnit(uDef)
 	end
+
+	-- after the raptor pass, which would otherwise overwrite the raptor cost overrides
+	moddedArsenalTweaks(name, uDef, modOptions)
 
 	--[[ Sanitize to whole frames (plus leeways because float arithmetic is bonkers).
          The engine uses full frames for actual reload times, but forwards the raw

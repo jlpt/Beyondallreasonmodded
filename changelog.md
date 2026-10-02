@@ -1,3 +1,15 @@
+# Modded
+- [Raptor & Scavenger Arsenal] New option, on by default: Armada, Cortex and Legion can build raptor nests, roosts, lairs and a queen's throne, raptor defences, and the scavenger units and buildings of their own faction
+- [Sukuna] New unit at T1, T2 and T3 bot labs
+  - T1: Dismantle slashes
+  - T2: adds Domain Expansion: Malevolent Shrine
+  - T3: adds Fuga, a flaming arrow
+- [Steve] New unit at T1, T2 and T3 bot labs
+  - T1: bow and arrows, places dirt and cobblestone blocks
+  - T2: adds Nether Portals that move allied ground units between portals
+  - T3: adds TNT that only hurts enemies
+- [Fahh] The fahh sound plays when a unit dies
+
 # October
 - [Shuriken] 280.5 -> 270 speed
 - [Tiger] 462 -> 410 LoS, DPS -4%, Projectile velocity 410 -> 330

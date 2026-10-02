@@ -67,6 +67,12 @@ if Spring.GetModOptions().experimentalextraunits or Spring.GetModOptions().scavu
 	legionEnabled = true
 end
 
+if Spring.GetModOptions().raptorscavarsenal then
+	raptorsEnabled = true
+	scavengersEnabled = true
+	legionEnabled = true
+end
+
 if Spring.GetModOptions().forceallunits then
 	raptorsEnabled = true
 	scavengersEnabled = true
